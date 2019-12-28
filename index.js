@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   console.log(req.body);
   res.json({
-    name: "test response"
+    name: "test response jenkins"
   });
 });
 
