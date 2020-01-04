@@ -1,17 +1,17 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const logger = require("morgan");
-const cors = require("cors");
+const express = require('express');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const cors = require('cors');
 
 const app = express();
-app.use(logger("dev"));
+app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   console.log(req.body);
   res.json({
-    name: "test response jenkins"
+    name: 'test response jenkins',
   });
 });
 
