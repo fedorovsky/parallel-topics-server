@@ -19,3 +19,5 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server was started on port: ${PORT}`);
 });
+
+// https://github.com/sequelize/express-example
