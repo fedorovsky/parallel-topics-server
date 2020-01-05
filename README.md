@@ -1,6 +1,4 @@
 # parallel-topics-server
 
-parallel-topics-server
-
-`npx sequelize-cli db:migration`
-`npx sequelize-cli model:generate --name User --attributes name:string,password:string,email:string`
+```npx sequelize-cli db:migration```
+```npx sequelize-cli model:generate --name User --attributes name:string,password:string,email:string```
