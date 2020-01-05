@@ -24,7 +24,8 @@
     "mariadb": "^2.1.4",
     "morgan": "^1.9.1",
     "prettier": "^1.19.1",
-    "sequelize": "^5.21.3"
+    "sequelize": "^5.21.3",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
