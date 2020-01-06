@@ -7,7 +7,6 @@ const { toJWT } = require('../authorization/jwt');
 router.post('/register', (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(passwordHash => {
     req.body.password = passwordHash;
-    console.log('[REGISTER]', req.body);
     User.create(req.body)
       .then(user => {
         if (!user) {
@@ -15,7 +14,13 @@ router.post('/register', (req, res, next) => {
             message: `user does not exist`,
           });
         }
-        return res.status(201).send(user);
+        console.log('[REGISTER SUCCESS]', req.body);
+        return res.status(201).send({
+          jwt: toJWT({ id: user.id, name: user.name, email: user.email }),
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        });
       })
       .catch(error => next(error));
   });
@@ -42,9 +47,10 @@ router.post('/login', (req, res) => {
           });
         }
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          console.log('[LOGIN]', user);
+          console.log('[LOGIN SUCCESS]', user);
           res.send({
             jwt: toJWT({ id: user.id, name: user.name, email: user.email }),
+            id: user.id,
             name: user.name,
             email: user.email,
           });
