@@ -4,6 +4,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const Sequelize = require('sequelize');
 
+var auth = require('./routes/auth');
 var users = require('./routes/users');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * Rotes
  */
+app.use('/auth', auth);
 app.use('/users', users);
 
 const PORT = 5000;
