@@ -3,6 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Task = sequelize.define('Task', {
     title: DataTypes.STRING,
+    text: DataTypes.TEXT,
   });
 
   Task.associate = function(models) {
