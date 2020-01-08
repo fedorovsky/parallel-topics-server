@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
+const TaskModel = require('./models/task');
 
 const sequelize = new Sequelize(
   'parallel-topics',
@@ -23,6 +24,7 @@ sequelize
   });
 
 const User = UserModel(sequelize, Sequelize);
+const Task = TaskModel(sequelize, Sequelize);
 
 sequelize.sync().then(() => {
   console.log(`[SEQUELIZE] [Sync Success]`);
@@ -30,4 +32,5 @@ sequelize.sync().then(() => {
 
 module.exports = {
   User,
+  TaskModel,
 };
