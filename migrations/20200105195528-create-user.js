@@ -15,7 +15,8 @@ module.exports = {
         type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(126).BINARY,
+        unique: true,
       },
       createdAt: {
         allowNull: false,

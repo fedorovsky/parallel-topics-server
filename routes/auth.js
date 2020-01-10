@@ -22,7 +22,12 @@ router.post('/register', (req, res, next) => {
           email: user.email,
         });
       })
-      .catch(error => next(error));
+      .catch(error => {
+        console.log(error);
+        res.status(400).send({
+          message: error,
+        });
+      });
   });
 });
 

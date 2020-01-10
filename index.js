@@ -27,3 +27,5 @@ app.listen(PORT, () => {
 // https://github.com/sequelize/express-example
 // https://github.com/AlbertSmit/Grozeries-Server
 // https://github.com/VitaliiKulyk/asap
+
+// https://medium.com/@CaptainFuntastic/sequelize-migrations-with-relations-a8fd40a0912b
