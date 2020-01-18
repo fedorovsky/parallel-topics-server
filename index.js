@@ -28,4 +28,5 @@ app.listen(PORT, () => {
 // https://github.com/AlbertSmit/Grozeries-Server
 // https://github.com/VitaliiKulyk/asap
 
-// https://medium.com/@CaptainFuntastic/sequelize-migrations-with-relations-a8fd40a0912b
+// Many to Many
+// https://medium.com/@the_ozmic/how-to-create-many-to-many-relationship-using-sequelize-orm-postgres-on-express-677753a3edb5
