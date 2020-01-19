@@ -26,7 +26,16 @@ sequelize
 const User = UserModel(sequelize, Sequelize);
 const Task = TaskModel(sequelize, Sequelize);
 
-sequelize.sync().then(() => {
+/**
+ * Associations
+ */
+User.hasMany(Task);
+Task.belongsTo(User);
+
+/**
+ * Sync
+ */
+sequelize.sync({ force: true }).then(() => {
   console.log(`[SEQUELIZE] [Sync Success]`);
 });
 
