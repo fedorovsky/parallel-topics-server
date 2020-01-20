@@ -41,5 +41,5 @@ sequelize.sync({ force: true }).then(() => {
 
 module.exports = {
   User,
-  TaskModel,
+  Task,
 };
