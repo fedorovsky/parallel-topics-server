@@ -29,7 +29,7 @@ const Task = TaskModel(sequelize, Sequelize);
 /**
  * Associations
  */
-User.hasMany(Task);
+User.hasMany(Task, { as: 'tasks' });
 Task.belongsTo(User);
 
 /**
