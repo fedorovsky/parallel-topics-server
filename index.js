@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 
 var auth = require('./routes/auth');
 var users = require('./routes/users');
-var tasks = require('./routes/tasks');
+var topics = require('./routes/topics');
 
 const app = express();
 app.use(logger('dev'));
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
  */
 app.use('/auth', auth);
 app.use('/users', users);
-app.use('/tasks', tasks);
+app.use('/topics', topics);
 
 const PORT = 5000;
 app.listen(PORT, () => {

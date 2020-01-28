@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
-const TaskModel = require('./models/task');
+const TopicModel = require('./models/topic');
 
 const sequelize = new Sequelize(
   'parallel-topics',
@@ -24,13 +24,13 @@ sequelize
   });
 
 const User = UserModel(sequelize, Sequelize);
-const Task = TaskModel(sequelize, Sequelize);
+const Topic = TopicModel(sequelize, Sequelize);
 
 /**
  * Associations
  */
-User.hasMany(Task, { as: 'tasks' });
-Task.belongsTo(User);
+User.hasMany(Topic, { as: 'topics' });
+Topic.belongsTo(User);
 
 /**
  * Sync
@@ -41,5 +41,5 @@ sequelize.sync({ force: true }).then(() => {
 
 module.exports = {
   User,
-  Task,
+  Topic,
 };
