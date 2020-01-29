@@ -30,4 +30,22 @@ router.get('/:id', (req, res) => {
     .catch(error => next(error));
 });
 
+router.put('/:id', async (req, res, next) => {
+  console.log('[UPDATE]', req.body, req.params.id);
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+    const [updated] = await User.update({ name }, { where: { id } });
+    if (updated) {
+      const updatedUser = await User.findByPk(id);
+      return res.status(200).json(updatedUser);
+    }
+    return res.status(404).send({
+      message: `user does not exist id:${id}`,
+    });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+});
+
 module.exports = router;
