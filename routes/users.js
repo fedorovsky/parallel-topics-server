@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
     .catch(error => next(error));
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', async (req, res) => {
   console.log('[UPDATE]', req.body, req.params.id);
   try {
     const { id } = req.params;
@@ -38,6 +38,8 @@ router.put('/:id', async (req, res, next) => {
     const [updated] = await User.update({ name }, { where: { id } });
     if (updated) {
       const updatedUser = await User.findByPk(id);
+      // const t = await Topic.create({ title: '111111111111111' });
+      // console.log('[updatedUser]', updatedUser.addTopic(t));
       return res.status(200).json(updatedUser);
     }
     return res.status(404).send({
