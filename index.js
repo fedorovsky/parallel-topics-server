@@ -36,3 +36,4 @@ app.listen(PORT, () => {
 
 // Many to Many
 // https://medium.com/@the_ozmic/how-to-create-many-to-many-relationship-using-sequelize-orm-postgres-on-express-677753a3edb5
+// https://sequelize-guides.netlify.com/many-many-associations/

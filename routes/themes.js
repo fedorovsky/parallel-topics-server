@@ -1,19 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const { Theme } = require('../sequelize');
+const { Theme, Topic } = require('../sequelize');
+
+router.get('/', async (req, res) => {
+  try {
+    const theme = await Theme.findAll({
+      include: [{ model: Topic }],
+    });
+    res.json(theme);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+});
 
 router.post('/create', (req, res) => {
-  console.log('[Topic CREATE]', req.body);
   Theme.create(req.body).then(theme => {
-    console.log('[Theme CREATE SUCCESS]', theme);
     res.json(theme);
   });
 });
 
-router.get('', (req, res) => {
-  Theme.findAll(req.body).then(list => {
-    res.json(list);
-  });
+router.post('/add-topic/', async (req, res) => {
+  const theme = await Theme.findByPk(1);
+  const topic = await Topic.findByPk(1);
+
+  const themeWithTopic = await theme.addTopic(topic);
+
+  res.json(themeWithTopic);
 });
 
 module.exports = router;
