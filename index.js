@@ -7,7 +7,7 @@ const Sequelize = require('sequelize');
 var auth = require('./routes/auth');
 var users = require('./routes/users');
 var topics = require('./routes/topics');
-var themes = require('./routes/themes');
+var categories = require('./routes/categories');
 
 const app = express();
 app.use(logger('dev'));
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/auth', auth);
 app.use('/users', users);
 app.use('/topics', topics);
-app.use('/themes', themes);
+app.use('/categories', categories);
 
 const PORT = 5000;
 app.listen(PORT, () => {

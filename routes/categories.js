@@ -1,31 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const { Theme, Topic } = require('../sequelize');
+const { Category, Topic } = require('../sequelize');
 
 router.get('/', async (req, res) => {
   try {
-    const theme = await Theme.findAll({
+    const category = await Category.findAll({
       include: [{ model: Topic }],
     });
-    res.json(theme);
+    res.json(category);
   } catch (error) {
     return res.status(500).send(error.message);
   }
 });
 
 router.post('/create', (req, res) => {
-  Theme.create(req.body).then(theme => {
-    res.json(theme);
+  Category.create(req.body).then(category => {
+    res.json(category);
   });
 });
 
 router.post('/add-topic/', async (req, res) => {
-  const theme = await Theme.findByPk(1);
+  const category = await Category.findByPk(1);
   const topic = await Topic.findByPk(1);
 
-  const themeWithTopic = await theme.addTopic(topic);
+  const categoryWithTopic = await category.addTopic(topic);
 
-  res.json(themeWithTopic);
+  res.json(categoryWithTopic);
 });
 
 module.exports = router;

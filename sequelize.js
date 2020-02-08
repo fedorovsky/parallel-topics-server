@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const UserModel = require('./models/user');
 const TopicModel = require('./models/topic');
-const ThemeModel = require('./models/theme');
+const CategoryModel = require('./models/category');
 
 const sequelize = new Sequelize(
   'parallel-topics',
@@ -26,7 +26,7 @@ sequelize
 
 const User = UserModel(sequelize, Sequelize);
 const Topic = TopicModel(sequelize, Sequelize);
-const Theme = ThemeModel(sequelize, Sequelize);
+const Category = CategoryModel(sequelize, Sequelize);
 
 /**
  * Associations
@@ -34,8 +34,8 @@ const Theme = ThemeModel(sequelize, Sequelize);
 User.hasMany(Topic, { as: 'topics' });
 Topic.belongsTo(User);
 
-Topic.belongsToMany(Theme, { through: 'TopicThemes' });
-Theme.belongsToMany(Topic, { through: 'TopicThemes' });
+Topic.belongsToMany(Category, { through: 'TopicCategories' });
+Category.belongsToMany(Topic, { through: 'TopicCategories' });
 
 /**
  * Sync
@@ -47,5 +47,5 @@ sequelize.sync({ force: true }).then(() => {
 module.exports = {
   User,
   Topic,
-  Theme,
+  Category,
 };

@@ -2,11 +2,15 @@ var express = require('express');
 var router = express.Router();
 const { Topic } = require('../sequelize');
 
+router.get('/', (req, res) => {
+  Topic.findAll().then(topic => {
+    res.json(topic);
+  });
+});
+
 router.post('/create', (req, res) => {
-  console.log('[Topic CREATE]', req.body);
-  Topic.create(req.body).then(task => {
-    console.log('[Topic CREATE SUCCESS]', task);
-    res.json(task);
+  Topic.create(req.body).then(topic => {
+    res.json(topic);
   });
 });
 

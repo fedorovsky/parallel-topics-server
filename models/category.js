@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Theme = sequelize.define('Theme', {
+  var Category = sequelize.define('Category', {
     name: DataTypes.STRING,
   });
-  return Theme;
+  return Category;
 };
