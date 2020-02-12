@@ -2,7 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Category = sequelize.define('Category', {
-    name: DataTypes.STRING,
+    title: DataTypes.STRING,
+    description: DataTypes.STRING,
   });
   return Category;
 };
